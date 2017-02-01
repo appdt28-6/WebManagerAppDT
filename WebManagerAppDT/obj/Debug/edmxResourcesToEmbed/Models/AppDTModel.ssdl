@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppDTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="LINEAS_PV">
+    <Key>
+      <PropertyRef Name="Line_Id" />
+    </Key>
+    <Property Name="Line_Id" Type="int" Nullable="false" />
+    <Property Name="Line_Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PRODUCTOS_PV">
+    <Key>
+      <PropertyRef Name="Prod_Id" />
+      <PropertyRef Name="Subl_Id" />
+    </Key>
+    <Property Name="Prod_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subl_Id" Type="int" Nullable="false" />
+    <Property Name="Prod_Codigo" Type="varchar" MaxLength="10" />
+    <Property Name="Prod_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Prod_Price" Type="int" Nullable="false" />
+    <Property Name="Prod_Desc" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SUBLINEAS_PV">
+    <Key>
+      <PropertyRef Name="Subl_Id" />
+      <PropertyRef Name="Line_Id" />
+    </Key>
+    <Property Name="Subl_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subl_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Line_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TICKETS_PV">
+    <Key>
+      <PropertyRef Name="Ticket_Id" />
+    </Key>
+    <Property Name="Ticket_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ticket_Date" Type="datetime" Nullable="false" />
+    <Property Name="Ticket_Subtotal" Type="float" Nullable="false" />
+    <Property Name="Ticket_Factura" Type="int" Nullable="false" />
+    <Property Name="Sucu_Id" Type="int" Nullable="false" />
+    <Property Name="Ticket_Status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIOS_PV">
+    <Key>
+      <PropertyRef Name="User_Id" />
+    </Key>
+    <Property Name="User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_nombre" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="User_Login" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="User_Password" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="User_Tipo" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Empl_Id" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VENTASTICKET_PV">
+    <Key>
+      <PropertyRef Name="Venta_Id" />
+      <PropertyRef Name="Ticket_Id" />
+      <PropertyRef Name="Prod_Id" />
+    </Key>
+    <Property Name="Venta_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ticket_Id" Type="int" Nullable="false" />
+    <Property Name="Prod_Id" Type="int" Nullable="false" />
+    <Property Name="Venta_Cantidad" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Prod_Price" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Venta_Importe" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <Function Name="ps_TicketsTotal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ps_VentasTotal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="AppDTModelStoreContainer">
+    <EntitySet Name="LINEAS_PV" EntityType="Self.LINEAS_PV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTOS_PV" EntityType="Self.PRODUCTOS_PV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SUBLINEAS_PV" EntityType="Self.SUBLINEAS_PV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TICKETS_PV" EntityType="Self.TICKETS_PV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIOS_PV" EntityType="Self.USUARIOS_PV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VENTASTICKET_PV" EntityType="Self.VENTASTICKET_PV" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

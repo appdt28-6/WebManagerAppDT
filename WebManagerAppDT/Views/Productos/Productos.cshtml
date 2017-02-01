@@ -1,0 +1,28 @@
+﻿
+@(Html.Kendo().Grid<WebManagerAppDT.Models.PRODUCTOS_PV>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.Prod_Codigo);
+        columns.Bound(c => c.Prod_Name);
+        columns.Bound(c => c.Prod_Price);
+        columns.Bound(c => c.Prod_Desc);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+            toolbar.Create();
+            toolbar.Excel();
+            toolbar.Pdf();
+      })
+      .Editable(editable => editable.Mode(GridEditMode.InLine))
+      .Pageable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Prod_Id))
+          .Read(read => read.Action("PRODUCTOS_PV_Read", "Productos"))
+          .Create(create => create.Action("PRODUCTOS_PV_Create", "Productos"))
+          .Update(update => update.Action("PRODUCTOS_PV_Update", "Productos"))
+          .Destroy(destroy => destroy.Action("PRODUCTOS_PV_Destroy", "Productos"))
+      )
+)

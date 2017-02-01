@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title - My Telerik MVC Application</title>
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
+
+    @* Content-box fixes as per http://docs.telerik.com/kendo-ui/third-party/using-kendo-with-twitter-bootstrap article  *@
+    <link href="@Url.Content("~/Content/box-sizing-fixes.css")" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.Content("~/Content/style/css/style.css")" rel="stylesheet" type="text/css" )" rel="stylesheet" type="text/css" />
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+    <link href="https://kendo.cdn.telerik.com/2016.2.607/styles/kendo.common-bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://kendo.cdn.telerik.com/2016.2.607/styles/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://kendo.cdn.telerik.com/2016.2.607/styles/kendo.dataviz.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://kendo.cdn.telerik.com/2016.2.607/styles/kendo.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://kendo.cdn.telerik.com/2016.2.607/styles/kendo.dataviz.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://kendo.cdn.telerik.com/2016.2.607/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2016.2.607/js/jszip.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2016.2.607/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2016.2.607/js/kendo.aspnetmvc.min.js"></script>
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    <script src="http://kendo.cdn.telerik.com/<version>/js/cultures/kendo.culture.es-ES.min.js"></script>
+    <!---->
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- bootstrap-css -->
+    <link rel="stylesheet" href="~/Content/style/css/bootstrap.css">
+    <!-- //bootstrap-css -->
+    <!-- Custom CSS -->
+    <link href="~/Content/style/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- font CSS -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- font-awesome icons -->
+    <link rel="stylesheet" href="~/Content/style/css/font.css" type="text/css" />
+    <link href="~/Content/style/css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!-- //font-awesome icons -->
+
+    <script src="~/Content/style/js/modernizr.js"></script>
+    <script src="~/Content/style/js/jquery.cookie.js"></script>
+
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+</head>
+<body class="dashboard-page">
+    <nav class="main-menu">
+        <ul>
+            <li>
+                <a href="~/AssignRoute/AssignRoute">
+                    <i class="fa fa-home nav_icon"></i>
+                    <span class="nav-text">
+                        Asignación de Rutas
+                    </span>
+                </a>
+            </li>
+            <li class="has-subnav">
+                <a href="javascript:;">
+                    <i class="fa fa-cogs" aria-hidden="true"></i>
+                    <span class="nav-text">
+                        Maestros
+                    </span>
+                    <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a class="subnav-text" href="~/Customer/Customer">
+                            Clientes
+                        </a>
+                    </li>
+                    <li>
+                        <a class="subnav-text" href="~/Installer/Installer">
+                            Instaladores
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="has-subnav">
+                <a href="javascript:;">
+                    <i class="fa fa-map-marker nav_icon"></i>
+                    <span class="nav-text">Visitas</span>
+                    <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a class="subnav-text" href="~/Visitas/Visitas">
+                            Registro de Visitas
+                        </a>
+                    </li>
+                    <li>
+                        <a class="subnav-text" href="~/SurveyData/SurveyData">
+                            Datos de encuesta
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+        <ul class="logout">
+            <li>
+                <a href="~/Home/LogOff">
+                    <i class="icon-off nav-icon"></i>
+                    <span class="nav-text">
+                        Salir
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!--menu-->
+    <section class="wrapper scrollable">
+        <nav class="user-menu">
+            <a href="javascript:;" class="main-menu-access">
+                <i class="icon-proton-logo"></i>
+                <i class="icon-reorder"></i>
+            </a>
+        </nav>
+        <section class="title-bar">
+            <div class="logo">
+                <h1>
+                    <a href="@Url.Action("Index", "Liquidation")">
+                        <img src="@Url.Content("~/Content/Images/interomobel.png")" width="57" height="57" />
+                    </a>
+                </h1>
+            </div>
+
+            <div class="header-right">
+                <div class="profile_details_left">
+                    <div class="profile_details">
+                        <ul>
+                            <li class="dropdown profile_details_drop">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <div class="profile_img">
+                                        <span class="prfil-img"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu drp-mnu">
+                                    @Html.Partial("_LoginPartial")
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </section>
+        <div class="main-grid">
+            @RenderSection("featured", required: false)
+            <div class="agile-grids">
+                @RenderBody()
+                <!-- //blank-page -->
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div class="footer">
+            <p>© 2016 Interimobel.</p>
+        </div>
+        <!-- //footer -->
+    </section>
+    <script src="~/Content/style/js/bootstrap.js"></script>
+    <script>
+  kendo.culture("es-ES");
+    </script>
+</body>
+</html>

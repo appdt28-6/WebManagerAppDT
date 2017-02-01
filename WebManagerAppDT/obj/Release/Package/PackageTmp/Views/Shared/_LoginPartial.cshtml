@@ -1,0 +1,20 @@
+﻿
+@if (Session["user_id"] != null)
+{
+    using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <li><i class="fa fa-user"></i>@Session["user_id"]</li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i>Cerrar sesión</a></li>
+
+    }
+}
+else
+{
+
+    <li>@Html.ActionLink("Iniciar sesión", "Login", "Home", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+
+}
+
+

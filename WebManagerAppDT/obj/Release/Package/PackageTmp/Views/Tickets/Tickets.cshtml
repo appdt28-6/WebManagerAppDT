@@ -1,0 +1,24 @@
+﻿<h1>Total Vendido @DateTime.Now : $@ViewData["total"] </h1>
+<br />
+
+
+@(Html.Kendo().Grid<WebManagerAppDT.Models.ps_TicketsTotal_Result>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Ticket_Id).Title("ID");
+          columns.Bound(c => c.Ticket_Subtotal).Title("Sub Total");
+          columns.Bound(c => c.Ticket_Factura).Title("Facturado").ClientTemplate("# if( Ticket_Factura == 0) { # No facturado  # } else {#<span>Facturado<span>#} #");
+          columns.Bound(c => c.Sucu_Id).Title("Sucursal");
+          columns.Bound(c => c.Ticket_Status).Title("Estado");
+      })
+      .ToolBar(toolbar => {
+          toolbar.Excel();
+          toolbar.Pdf();
+      })
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Read(read => read.Action("TICKETS_PV_Read", "Tickets"))
+      )
+)
